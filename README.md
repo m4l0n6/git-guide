@@ -1,97 +1,50 @@
-# 📦 Hướng dẫn Git cho Dự án
+# 📘 CÁC BƯỚC LÀM VIỆC NHÓM TRÊN GITHUB
 
-## ✅ Thiết lập ban đầu
-
-1. **Fork** repo (nếu là repo của người khác)
-2. **Clone** về máy:
+## 1. 🧭 Sao chép Repository (Clone)
+Mỗi thành viên clone repository về máy của bản thân:
 ```bash
-git clone https://github.com/<username>/<tên-repo>.git
+git clone <URL_repo>
 ```
 
-3. **Di chuyển vào thư mục dự án:**
+## 2. 🌿 Tạo Nhánh (Branch)
+Mỗi thành viên tạo một nhánh mới từ nhánh `main` để thực hiện công việc của bản thân:
 ```bash
-cd <tên-repo>
+git checkout -b <ten_nhanh>
 ```
 
-4. **Thêm remote gốc (nếu cần):**
+## 3. 💻 Thực hiện công việc
+Các thành viên thực hiện thay đổi, sau khi hoàn tất kiểm tra, sử dụng các lệnh:
 ```bash
-git remote add upstream https://github.com/<tên-team>/<tên-repo>.git
+git add .
+git commit -m "<thay_doi>"
 ```
 
----
-
-## 🔄 Cập nhật code mới nhất
-
+## 4. 🔄 Đồng bộ Nhánh Main
+Trước khi push, đảm bảo rằng nhóm đã cập nhật nhánh `main` từ remote:
 ```bash
-git fetch origin
 git checkout main
 git pull origin main
 ```
 
-Nếu có remote `upstream`:
+## 5. 🔀 Merge Nhánh Của Mình vào Main
+Merge nhánh của bạn vào nhánh `main`. Có thể thực hiện bằng GitHub hoặc dòng lệnh:
 ```bash
-git fetch upstream
-git merge upstream/main
+git checkout main
+git merge <feature_branch>
 ```
 
----
+## 6. 🚀 Tạo Pull Request (PR)
+- **Tạo PR:** Thành viên tạo một Pull Request trên GitHub để đề xuất việc merge nhánh `feature_branch` vào `main`.
+- **Kiểm tra và thảo luận:** Thành viên khác có thể kiểm tra và thảo luận về code trước khi merge.
 
-## 🌿 Tạo nhánh mới để làm việc
-
+## 7. ⬆️ Push Lên Repository
+Sau khi merge, quản lý sẽ push nhánh `main` lên repository:
 ```bash
-git checkout -b ten-nhanh-moi
-```
-Ví dụ:
-```bash
-git checkout -b feature/add-login
+git push origin main
 ```
 
----
-
-## 💾 Lưu và đẩy thay đổi
-
-1. **Kiểm tra trạng thái:**
+## 8. 🔃 Cập Nhật và Pull
+Các thành viên khác cần cập nhật repository local của họ:
 ```bash
-git status
-```
-
-2. **Thêm thay đổi:**
-```bash
-git add .
-```
-
-3. **Commit:**
-```bash
-git commit -m "Mô tả ngắn gọn thay đổi"
-```
-
-4. **Push lên GitHub:**
-```bash
-git push origin ten-nhanh-moi
-```
-
----
-
-## 🚀 Tạo Pull Request (PR)
-
-- Vào GitHub, tạo PR từ nhánh bạn vừa push lên.
-- Gắn label nếu có.
-- Gửi cho người review hoặc chờ merge.
-
----
-
-## ⚠️ Lưu ý khi làm việc nhóm
-
-- Mỗi tính năng nên được làm trên 1 nhánh riêng.
-- Tránh commit trực tiếp vào `main`.
-- Luôn **pull code mới nhất** trước khi làm.
-- Đặt tên nhánh rõ ràng: `feature/`, `fix/`, `hotfix/`, `refactor/`,...
-
----
-
-## 🔁 Rebase (tuỳ chọn, nâng cao)
-
-```bash
-git checkout feature/ten-nhanh
-git pull --rebase origin main
+git pull origin main
 ```
