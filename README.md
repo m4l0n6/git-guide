@@ -26,25 +26,35 @@ git checkout main
 git pull origin main
 ```
 
-## 5. 🔀 Merge Nhánh Của Mình vào Main
-Merge nhánh của bạn vào nhánh `main`. Có thể thực hiện bằng GitHub hoặc dòng lệnh:
+Sau đó quay lại nhánh của bạn và rebase nếu cần:
 ```bash
-git checkout main
-git merge <feature_branch>
+git checkout <ten_nhanh>
+git rebase main
+```
+
+## 5. ⬆️ Push Nhánh Lên GitHub
+```bash
+git push origin <ten_nhanh>
 ```
 
 ## 6. 🚀 Tạo Pull Request (PR)
-- **Tạo PR:** Thành viên tạo một Pull Request trên GitHub để đề xuất việc merge nhánh `feature_branch` vào `main`.
-- **Kiểm tra và thảo luận:** Thành viên khác có thể kiểm tra và thảo luận về code trước khi merge.
+- **Tạo PR:** Vào GitHub, chọn nhánh của bạn vừa push lên và nhấn “Compare & pull request”.
+- **Tiêu đề rõ ràng:** Đặt tiêu đề và mô tả ngắn gọn nội dung thay đổi.
+- **Reviewer:** Gán người review nếu cần.
+- **Thảo luận:** Thành viên khác có thể bình luận góp ý code.
+- **Merge:** Sau khi được duyệt, nhóm trưởng hoặc người có quyền sẽ merge vào `main`.
 
-## 7. ⬆️ Push Lên Repository
-Sau khi merge, quản lý sẽ push nhánh `main` lên repository:
+## 7. 🔀 Merge PR hoặc Merge thủ công
+Nếu không dùng GitHub, có thể merge thủ công bằng dòng lệnh:
 ```bash
+git checkout main
+git merge <feature_branch>
 git push origin main
 ```
 
 ## 8. 🔃 Cập Nhật và Pull
-Các thành viên khác cần cập nhật repository local của họ:
+Các thành viên khác cần cập nhật repository local của họ sau khi merge:
 ```bash
+git checkout main
 git pull origin main
 ```
